@@ -1,0 +1,226 @@
+/* --- Root Variables (Your Theme) --- */
+:root {
+  --primary-color: #6c63ff;
+  --primary-dark: #574ff0;
+  --primary-darker: #4a43c0;
+  --primary-light-bg: rgba(108, 99, 255, 0.1);
+  --primary-light-shadow: rgba(108, 99, 255, 0.3);
+
+  --bg-color: #f8f7ff;
+  --container-bg: #ffffff;
+  --task-bg: #ffffff;
+  --task-border: #eee;
+
+  --text-dark: #222;
+  --text-light: #555;
+  --border-light: #ddd;
+
+  --delete-red: #e74c3c;
+  --delete-red-bg: #e74c3c20;
+}
+
+/* --- Global & Container --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* --- Login / Main Box --- */
+.login {
+  background-color: var(--container-bg);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid var(--task-border);
+}
+
+/* --- Todo Form Section --- */
+.todosContainer {
+  width: 100%;
+}
+
+.todosContainer h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary-darker);
+  font-weight: 700;
+}
+
+.todosContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todosContainer input[type="text"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--text-dark);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.todosContainer input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-light-shadow);
+}
+
+.todosContainer button[type="submit"] {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.9rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.todosContainer button[type="submit"]:hover {
+  background-color: var(--primary-dark);
+}
+
+.todosContainer button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+.todosContainer button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* --- Task Item Styling (Assuming .todo class in Task.jsx) --- */
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--task-bg);
+  border: 1px solid var(--task-border);
+  border-left: 4px solid var(--task-border); /* Subtle left border */
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  transition: box-shadow 0.2s, border-left 0.2s, transform 0.2s;
+}
+
+.todo:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid var(--primary-color);
+  transform: translateX(2px);
+}
+
+.todo div {
+  flex: 1;
+  word-break: break-word; /* Prevents long text from overflowing */
+  padding-right: 0.5rem;
+}
+
+.todo h4 {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.todo p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+.todo > aside {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  align-items: center;
+}
+
+.todo > aside > input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color); /* Easiest way to style a checkbox */
+}
+
+.todo > aside > button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+/* Delete button specific */
+.todo > aside > button.deleteBtn {
+  color: var(--delete-red);
+}
+
+.todo > aside > button.deleteBtn:hover {
+  background-color: var(--delete-red-bg);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+  body {
+    padding: 0;
+    align-items: flex-start; /* Aligns box to the top on mobile */
+  }
+
+  .login {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    padding: 2rem 1.5rem;
+    min-height: 100vh;
+    box-shadow: none;
+    border: none;
+  }
+
+  .todosContainer h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .todo {
+    padding: 0.75rem;
+  }
+
+  .todo h4 {
+    font-size: 0.95rem;
+  }
+
+  .todo p {
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,124 @@
+/* --- Main Profile Container --- */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: calc(100vh - 100px); /* Adjust 100px based on your header height */
+  width: 100%;
+}
+
+/* --- Authenticated User Profile --- */
+.user-profile {
+  background-color: var(--container-bg);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+  padding: 3rem;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  border: 1px solid var(--task-border);
+  /* Animation for appearing */
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Profile Avatar (Initial) --- */
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1.5rem auto;
+  border: 4px solid var(--container-bg);
+  box-shadow: 0 0 0 4px var(--primary-color);
+}
+
+.profile-avatar span {
+  font-size: 3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.user-profile .user-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.user-profile .user-email {
+  font-size: 1.1rem;
+  color: var(--text-light);
+}
+
+/* --- Login Prompt (Unauthenticated) --- */
+.login-prompt {
+  text-align: center;
+  padding: 2rem;
+}
+
+.login-prompt h1 {
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.login-prompt p {
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 1rem;
+    align-items: flex-start; /* Align to top on mobile */
+  }
+
+  .user-profile {
+    padding: 2rem 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    /* Remove rounded corners and shadow for a full-screen mobile look */
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    min-height: calc(100vh - 80px); /* Adjust 80px based on mobile header */
+  }
+
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-avatar span {
+    font-size: 2.5rem;
+  }
+
+  .user-profile .user-name {
+    font-size: 1.5rem;
+  }
+
+  .user-profile .user-email {
+    font-size: 1rem;
+  }
+
+  .login-prompt {
+    padding-top: 4rem; /* Add some space from the header */
+  }
+}

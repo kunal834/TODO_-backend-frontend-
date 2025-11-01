@@ -1,0 +1,100 @@
+/* --- Header Navigation --- */
+.header {
+  background-color: var(--container-bg);
+  width: 100%;
+  padding: 1.25rem 2.5rem; /* 20px top/bottom, 40px left/right */
+  
+  /* Flexbox for layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Sticky position */
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  gap: 15px;
+  /* Professional shadow */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--task-border);
+}
+
+/* --- Header Logo (TODO) --- */
+.header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-darker);
+  margin: 0;
+}
+
+/* --- Navigation Links Container --- */
+.header article {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* 24px space between items */
+}
+
+/* --- Standard Nav Links (Home, Profile) --- */
+.header article > a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 500;
+  font-size: 1rem;
+  padding-bottom: 5px; /* Creates space for the underline effect */
+  border-bottom: 2px solid transparent; /* Placeholder for hover */
+  transition: color 0.2s ease, border-bottom 0.2s ease;
+}
+
+.header article > a:hover {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* --- Button Style (for Login & Logout) --- */
+.header article .btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none; /* For the <Link> element */
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.header article .btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.header article .btn:active {
+  transform: scale(0.98);
+}
+
+.header article .btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* --- Responsive Design (Mobile) --- */
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column; /* Stack logo and links */
+    align-items: center; /* Center everything */
+    padding: 1rem;
+    gap: 1rem; /* Space between logo and links container */
+  }
+
+  .header article {
+    width: 100%;
+    justify-content: center; /* Center the nav items */
+    gap: 1.25rem;
+    flex-wrap: wrap; /* Allow items to wrap if needed */
+  }
+  
+  .header article > a {
+    font-size: 0.95rem; /* Slightly smaller text on mobile */
+  }
+}
