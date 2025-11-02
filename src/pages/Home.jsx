@@ -5,7 +5,7 @@ import { server } from '../main'
 import toast from 'react-hot-toast'
 import { useEffect } from 'react'
 import Task from '../components/Task'
-import '../styles/home.css'
+import '../styles/Home.css'
 
 const Home = () => {
 
