@@ -5,7 +5,7 @@ import { server } from '../main'
 import usestate from 'react'
 import { context } from '../main'
 import Loader from '../components/Loader'
-import '../styles/profile.css'
+import '../styles/Profile.css'
 
 
 
