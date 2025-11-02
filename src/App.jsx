@@ -1,10 +1,10 @@
 // import "./styles/app.scss"
 import { BrowserRouter as Router , Route , Routes, data} from "react-router-dom"
-import Home from "./pages/Home"
-import Header from "./components/Header"
-import Profile from "./pages/Profile"
-import Login from "./pages/Login"
-import Register from "./pages/Register"
+import Home from "./pages/Home.jsx"
+import Header from "./components/Header.jsx"
+import Profile from "./pages/Profile.jsx"
+import Login from "./pages/Login.jsx"
+import Register from "./pages/Register.jsx"
 import { Toaster } from "react-hot-toast"
 import { useEffect } from "react"
 import axios from "axios"
@@ -16,13 +16,38 @@ function App() {
 
 const { user, setisAuthenticated, setuser , setloading } = useContext(context);
 
-useEffect(() => {
+// useEffect(() => {
     
-  axios.get(`${server}/users/me`, {
-    withCredentials: true,
-  }).then(res => {setuser(res.data.user); setisAuthenticated(true)} ,setloading(false)).catch((error)=> setuser({}) ,setisAuthenticated(false) , setloading(false) );
-}, [])
+//   axios.get(`${server}/users/me`, {
+//     withCredentials: true,
+//   }).then(res => {setuser(res.data.user); setisAuthenticated(true)} ,setloading(false)).catch((error)=> {
+//     setuser({}) ;
+//      setisAuthenticated(false) ;
+//      setloading(false) ; 
+//      console.log(error)} );
+// }, [])
  
+useEffect(() => {
+    setloading(true); // Start loading here
+    
+    axios.get(`${server}/users/me`, {
+        withCredentials: true,
+    })
+    .then(res => {
+        setuser(res.data.user);
+        setisAuthenticated(true);
+    })
+    .catch((error) => {
+        // This block runs if the API call fails
+        setuser({});
+        setisAuthenticated(false);
+        console.log(error); // Good to log the error
+    })
+    .finally(() => {
+        // This block runs *after* .then() or .catch()
+        setloading(false); 
+    });
+}, []); // Empty dependency array is correct
 
   return <Router>
   <Header />
