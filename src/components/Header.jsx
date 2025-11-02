@@ -5,7 +5,7 @@ import { context } from '../main'
 import { server } from '../main'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import '../styles/header.css'
+import '../styles/Header.css'
 
 const Header = () => {
   const { isAuthenticated, setisAuthenticated , loading , setloading } = useContext(context) // we can access the context value here
